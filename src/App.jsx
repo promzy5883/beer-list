@@ -28,11 +28,24 @@ function App() {
         <button className="filter">
           Filter
           <span
+            className="span1"
             onClick={() => {
-              setLink("https://api.punkapi.com/v2/beers?abv_gt=5");
+              setLink(
+                "https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_gt=5"
+              );
             }}
           >
-            Alcohol by Volume
+            5% & above Alcoholic
+          </span>
+          <span
+            className="span2"
+            onClick={() => {
+              setLink(
+                "https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_it=5"
+              );
+            }}
+          >
+            Below 5%
           </span>
         </button>
       </div>

@@ -26,10 +26,10 @@
   cursor: pointer;
   margin-bottom: 5px;
   padding: 8px 15px;
-  font-family: cursive;
+  font-family: serif;
   position: relative;
 }
-.filter span {
+.span1 {
   position: absolute;
   background-color: white;
   cursor: pointer;
@@ -44,7 +44,23 @@
   transform: translateY(-200px);
   transition: all 0.3s;
 }
-.filter:hover span {
+.span2 {
+  position: absolute;
+  background-color: white;
+  cursor: pointer;
+  width: 130%;
+  height: 130%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -140%;
+  top: -20%;
+  box-shadow: 0.5px 0 3px rgba(0, 0, 0, 0.2);
+  transform: translateY(-200px);
+  transition: all 0.3s;
+}
+.filter:hover .span1,
+.filter:hover .span2 {
   transform: translateY(0);
 }
 .beerName {

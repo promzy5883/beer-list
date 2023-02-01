@@ -41,7 +41,7 @@ function App() {
             className="span2"
             onClick={() => {
               setLink(
-                "https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_it=5"
+                "https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_lt=5"
               );
             }}
           >

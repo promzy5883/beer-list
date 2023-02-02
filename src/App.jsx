@@ -7,7 +7,9 @@ function App() {
   const [link, setLink] = useState(
     "https://api.punkapi.com/v2/beers?ids=|1|2|3|4|5|6|7|8|9"
   );
+  const [switchOn, setSwitchOn] = useState(null);
   const { data, error, loading } = useFetch(link);
+  const [left, setLeft] = useState(0);
   const datas = [
     data[0],
     data[1],
@@ -19,36 +21,33 @@ function App() {
     data[7],
     data[8],
   ];
+
+  function switched() {
+    if (switchOn === null || switchOn === false) {
+      setSwitchOn(true);
+      setLeft(50);
+      setLink(
+        "https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_gt=5"
+      );
+    } else if (switchOn === true) {
+      setSwitchOn(false);
+      setLeft(0);
+      setLink(
+        "https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_lt=5"
+      );
+    }
+  }
   if (error) console.log(error);
-  if (loading) return <p>LOADING...</p>;
+
   return (
     <div className="App">
       <div className="logo">
         <h2>Beers</h2>
-        <button className="filter">
-          Filter
-          <span
-            className="span1"
-            onClick={() => {
-              setLink(
-                "https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_gt=5"
-              );
-            }}
-          >
-            5% & above Alcoholic
-          </span>
-          <span
-            className="span2"
-            onClick={() => {
-              setLink(
-                "https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_lt=5"
-              );
-            }}
-          >
-            Below 5%
-          </span>
-        </button>
+        <div className="switch" onClick={switched}>
+          <div style={{ left: `${left}%` }} className="circle"></div>
+        </div>
       </div>
+      {loading && <p>LOADING...</p>}
       <div className="beers">
         {data?.map((value) => {
           return (
@@ -70,4 +69,5 @@ function App() {
 
 export default App;
 
-//https://v2.jokeapi.dev/joke/Any {data?.setup + " " + data?.delivery}
+//"https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_gt=5"
+//"https://api.punkapi.com/v2/beers?ids=1|2|3|4|5|6|7|8|9&abv_lt=5"

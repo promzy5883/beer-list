@@ -2,6 +2,7 @@ import reactLogo from "./assets/react.svg";
 import "./App.css";
 import useFetch from "./useFetch";
 import { useState } from "react";
+import { useEffect } from "react";
 
 function App() {
   const [link, setLink] = useState(
@@ -21,7 +22,9 @@ function App() {
     data[7],
     data[8],
   ];
-
+  useEffect(() => {
+    alert("Turn on the switch to Filter alcohol by volume");
+  }, []);
   function switched() {
     if (switchOn === null || switchOn === false) {
       setSwitchOn(true);
